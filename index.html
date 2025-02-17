@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Sports Streaming</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <!-- Navigation Bar -->
+    <nav class="bg-blue-500 p-4 text-center">
+        <h1 class="text-white text-2xl font-bold">Live Sports Streaming</h1>
+    </nav>
+
+    <!-- Live Stream Input Section -->
+    <section class="py-16">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold mb-8">Cast Your Live Sports Event</h2>
+            <div class="max-w-lg mx-auto bg-white shadow-lg rounded-lg p-8">
+                <label for="eventTitle" class="block text-gray-700 font-bold mb-2">Event Title</label>
+                <input type="text" id="eventTitle" class="w-full p-3 border rounded-lg mb-4" placeholder="Enter event name">
+                
+                <label for="videoURL" class="block text-gray-700 font-bold mb-2">Live Stream URL</label>
+                <input type="text" id="videoURL" class="w-full p-3 border rounded-lg mb-4" placeholder="Enter live stream link">
+                
+                <button onclick="startStreaming()" class="w-full px-4 py-2 bg-blue-500 text-white font-bold rounded-lg hover:bg-blue-600">
+                    Start Live Stream
+                </button>
+            </div>
+            <div id="liveStream" class="mt-8 max-w-lg mx-auto bg-white shadow-lg p-6 rounded-lg hidden">
+                <h3 id="streamTitle" class="text-xl font-bold"></h3>
+                <iframe id="streamVideo" class="w-full mt-4" height="315" src="" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function startStreaming() {
+            const title = document.getElementById('eventTitle').value.trim();
+            const url = document.getElementById('videoURL').value.trim();
+            
+            if (!title || !url) {
+                alert('Please enter an event title and a valid video URL.');
+                return;
+            }
+            
+            document.getElementById('streamTitle').innerText = title;
+            document.getElementById('streamVideo').src = url;
+            document.getElementById('liveStream').classList.remove('hidden');
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer class="bg-blue-500 text-white text-center py-4">
+        <p>&copy; 2025 Live Sports Streaming. All rights reserved.</p>
+    </footer>
+</body>
+</html>
